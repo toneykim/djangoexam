@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Dashboard</title>
+<style>
+
+table, tr, td {
+	border: 2px solid black
+
+}
+
+</style>
+
+</head>
+<body>
+<a href="/logout">Logout</a><br>
+
+
+Hello, {{request.session.name}}!<br>
+<br>
+
+Your Trip Schedules<br> 
+<table>
+<tr>
+<th>Destination</th>
+<th>Travel Start Date</th>
+<th>Travel End Date</th>
+<th>Plan</th>
+</tr>
+
+
+{% for query in query1 %}
+<tr>
+<td><a href="/travels/destination/{{query.id}}" >
+
+	{{query.destination}}</a></td>
+
+<td>	{{query.datefrom}} </td>
+<td>	{{query.dateto}}</td>
+<td>	{{query.description}}</td>
+</tr>
+
+
+
+{% endfor %}
+
+</table>
+<br>
+
+<table>
+<tr>
+<th>Name</th>
+<th>Destination</th>
+<th>Travel Start Date</th>
+<th>Travel End Date</th>
+<th>Plan</th>
+<th>Do you want to Join?</th>
+</tr>
+
+
+{% for query in query2.all %}
+<tr>
+<td>
+
+{% for num in query.scheduledby.all %}
+
+{{ num.name }}
+
+{% endfor %}
+
+ </td>
+<td><a href="/travels/destination/{{query.id}}" >
+	{{query.destination}}</a></td>
+<td>	{{query.datefrom}} </td>
+<td>	{{query.dateto}}</td>
+<td>	{{query.description}}</td>
+<td> 	<a href="/join/{{query.id}}">Join</a>				</td>
+</tr>
+
+
+{% endfor %}
+</table>
+
+
+
+
+
+<a href="/travels/add">Add Travel Plan</a>
+
+
+
+
+</body>
+</html>

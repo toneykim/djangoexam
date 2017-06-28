@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Destination</title>
+</head>
+<body>
+
+<a href="/travels">Home</a><br>
+<a href="/logout">Logout</a><br>
+
+
+{% for query in query11 %}
+<h1>{{query.destination}}</h1>
+Planned By: {{query.scheduledby.name}}<br>
+Description: {{query.description}} <br>
+Travel Date From:{{query.datefrom}} <br> 
+Travel Date To:{{query.dateto}}<br>
+<br>
+
+
+
+
+{% endfor %}
+
+<h1>Other users' joining the trip</h1>
+
+{% for query in query12 %}
+ 
+	{{query.name}}
+
+
+	
+
+
+{% endfor %}
+
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Django Belt Exam</title>
+
+<style>
+		label {
+			display: block;
+			width: 150px;
+
+		}
+
+		main {
+			width: 200px;
+			display: inline-block;
+			vertical-align: top;
+
+		}
+
+		aside {
+			width: 200px;
+			display: inline-block;
+			vertical-align: top;
+
+		}
+
+</style>
+
+</head>
+<body>
+Welcome!<br>
+
+{% if messages %}
+	{% for message in messages %}
+		<p>{{ message }}</p>
+	{% endfor %}
+{% endif %}
+
+
+
+
+
+<main>
+
+<article>
+
+
+<fieldset>
+<legend>Register</legend>
+<form action="/register" method="post">
+{% csrf_token %}
+<label for="name">Name<input type="text" name="name"></label>
+<label for="username">Username<input type="text" name="username"></label>
+<label for="password">Password<input type="password" name="password"></label>
+*Password should be at least 8 characters
+<label for="confirm">Confirm Password<input type="password" name="confirm"></label>
+
+
+
+<button>Register</button>
+</form>
+</fieldset>
+
+
+</article>
+
+
+<section>
+
+<fieldset>
+<legend>Log In</legend>
+<form action="/login" method="post">
+{% csrf_token %}
+<label for="username">Username<input type="text" name="username"></label>
+<label for="password">Password<input type="password" name="password"></label>
+<button>Log In</button>
+</form>
+</fieldset>
+
+
+
+</section>
+
+
+
+
+</main>
+</body>
+</html>
